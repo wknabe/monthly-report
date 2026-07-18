@@ -1,0 +1,1014 @@
+<title>月次報告作成支援アプリ — UIモックアップ</title>
+<style>
+  :root {
+    --bg: #f4f5f2;
+    --bg-elevated: #ffffff;
+    --bg-sunken: #eceeea;
+    --ink: #1b1e24;
+    --ink-muted: #5b6270;
+    --ink-faint: #8a90a0;
+    --accent: #2c3a63;
+    --accent-strong: #1d2847;
+    --accent-soft: #e5e8f2;
+    --border: #dadde1;
+    --border-strong: #c3c7ce;
+    --success: #2f7d5a;
+    --success-soft: #e2f0e9;
+    --warning: #b8792a;
+    --warning-soft: #f6ead9;
+    --danger: #b23a34;
+    --danger-soft: #f7e3e1;
+    --shadow: 0 1px 2px rgba(27, 30, 36, 0.06), 0 4px 16px rgba(27, 30, 36, 0.06);
+    --radius-s: 4px;
+    --radius-m: 8px;
+    --font-display: "游明朝体", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+    --font-body: "游ゴシック体", "Yu Gothic", YuGothic, "Hiragino Kaku Gothic ProN", "Noto Sans JP", Meiryo, sans-serif;
+    --desktop-bg: #cfd3d6;
+    --window-border: #b9bec3;
+    --titlebar-bg: #e9eaea;
+    --titlebar-ink: #3a3d42;
+    color-scheme: light;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #15171c;
+      --bg-elevated: #1d2029;
+      --bg-sunken: #101216;
+      --ink: #e7e8ea;
+      --ink-muted: #9ba1ad;
+      --ink-faint: #6b7280;
+      --accent: #8b9bd6;
+      --accent-strong: #aab7e3;
+      --accent-soft: #262c42;
+      --border: #2c303a;
+      --border-strong: #3a3f4b;
+      --success: #6bbf94;
+      --success-soft: #1c2e26;
+      --warning: #dba25a;
+      --warning-soft: #332714;
+      --danger: #e0847d;
+      --danger-soft: #331e1c;
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.35);
+      --desktop-bg: #0b0c0f;
+      --window-border: #33363e;
+      --titlebar-bg: #1a1c22;
+      --titlebar-ink: #c7c9ce;
+      color-scheme: dark;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #15171c;
+    --bg-elevated: #1d2029;
+    --bg-sunken: #101216;
+    --ink: #e7e8ea;
+    --ink-muted: #9ba1ad;
+    --ink-faint: #6b7280;
+    --accent: #8b9bd6;
+    --accent-strong: #aab7e3;
+    --accent-soft: #262c42;
+    --border: #2c303a;
+    --border-strong: #3a3f4b;
+    --success: #6bbf94;
+    --success-soft: #1c2e26;
+    --warning: #dba25a;
+    --warning-soft: #332714;
+    --danger: #e0847d;
+    --danger-soft: #331e1c;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.35);
+    --desktop-bg: #0b0c0f;
+    --window-border: #33363e;
+    --titlebar-bg: #1a1c22;
+    --titlebar-ink: #c7c9ce;
+    color-scheme: dark;
+  }
+
+  :root[data-theme="light"] {
+    --bg: #f4f5f2;
+    --bg-elevated: #ffffff;
+    --bg-sunken: #eceeea;
+    --ink: #1b1e24;
+    --ink-muted: #5b6270;
+    --ink-faint: #8a90a0;
+    --accent: #2c3a63;
+    --accent-strong: #1d2847;
+    --accent-soft: #e5e8f2;
+    --border: #dadde1;
+    --border-strong: #c3c7ce;
+    --success: #2f7d5a;
+    --success-soft: #e2f0e9;
+    --warning: #b8792a;
+    --warning-soft: #f6ead9;
+    --danger: #b23a34;
+    --danger-soft: #f7e3e1;
+    --shadow: 0 1px 2px rgba(27, 30, 36, 0.06), 0 4px 16px rgba(27, 30, 36, 0.06);
+    --desktop-bg: #cfd3d6;
+    --window-border: #b9bec3;
+    --titlebar-bg: #e9eaea;
+    --titlebar-ink: #3a3d42;
+    color-scheme: light;
+  }
+
+  /* ---------- 配色バリエーション: 緑白ライト ---------- */
+  :root[data-theme="light"][data-palette="green"] {
+    --bg: #f4f6f0;
+    --bg-elevated: #ffffff;
+    --bg-sunken: #e9eee1;
+    --ink: #1c2118;
+    --ink-muted: #57614e;
+    --ink-faint: #8b957f;
+    --accent: #2f6b45;
+    --accent-strong: #1f4d31;
+    --accent-soft: #e1ebe2;
+    --border: #dbe3d0;
+    --border-strong: #c1cbb2;
+    --success: #2f8f7a;
+    --success-soft: #dff0ea;
+    --warning: #b8792a;
+    --warning-soft: #f6ead9;
+    --danger: #b23a34;
+    --danger-soft: #f7e3e1;
+    --shadow: 0 1px 2px rgba(24, 30, 20, 0.06), 0 4px 16px rgba(24, 30, 20, 0.06);
+    --desktop-bg: #cdd4c5;
+    --window-border: #b6bfab;
+    --titlebar-bg: #e7ebe0;
+    --titlebar-ink: #333d2d;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    height: 100%;
+  }
+
+  body {
+    background: var(--desktop-bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+  }
+
+  ::selection { background: var(--accent-soft); }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+  }
+
+  /* ---------- デスクトップウィンドウ枠(Electron想定) ---------- */
+  .window-frame {
+    width: 100%;
+    max-width: 1040px;
+    height: min(88vh, 800px);
+    display: flex;
+    flex-direction: column;
+    background: var(--bg);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.32), 0 2px 0 rgba(0, 0, 0, 0.06);
+    border: 1px solid var(--window-border);
+  }
+
+  .title-bar {
+    flex: none;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    background: var(--titlebar-bg);
+    color: var(--titlebar-ink);
+    -webkit-app-region: drag;
+    border-bottom: 1px solid var(--window-border);
+  }
+
+  .title-bar-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-left: 14px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--titlebar-ink);
+  }
+
+  .title-bar-icon {
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    background: var(--accent);
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 10px;
+    font-family: var(--font-display);
+  }
+
+  .title-bar .spacer { flex: 1; }
+
+  .win-caption-btns {
+    display: flex;
+    height: 100%;
+    -webkit-app-region: no-drag;
+  }
+
+  .win-caption-btns button {
+    width: 44px;
+    height: 100%;
+    border: none;
+    background: transparent;
+    color: var(--titlebar-ink);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.75;
+  }
+  .win-caption-btns button:hover { background: rgba(127, 127, 127, 0.16); opacity: 1; }
+  .win-caption-btns button.close:hover { background: #c0392b; color: #fff; opacity: 1; }
+  .win-caption-btns svg { width: 10px; height: 10px; }
+
+  :root[data-palette="green"] .period-bar,
+  :root[data-palette="green"] .tab-bar {
+    background: var(--accent-soft);
+    border-bottom-color: var(--border-strong);
+  }
+
+  .palette-switch {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 12px;
+    -webkit-app-region: no-drag;
+  }
+
+  .palette-swatch {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    padding: 0;
+    box-shadow: 0 0 0 1px transparent;
+  }
+  .palette-swatch.active { box-shadow: 0 0 0 2px var(--titlebar-bg), 0 0 0 3px var(--ink-muted); }
+  .palette-swatch[data-palette-btn="indigo"] { background: #2c3a63; }
+  .palette-swatch[data-palette-btn="green"] { background: #2f6b45; }
+
+  .app {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  main { overflow-y: auto; }
+
+  /* ---------- 画面A: 月選択・報告期間バー ---------- */
+  .period-bar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 28px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    box-shadow: var(--shadow);
+  }
+
+  .brand {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-right: 8px;
+  }
+
+  .brand-mark {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+
+  .brand-sub {
+    font-size: 11px;
+    color: var(--ink-faint);
+    white-space: nowrap;
+  }
+
+  .field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .field-group label {
+    font-size: 11px;
+    color: var(--ink-muted);
+    letter-spacing: 0.03em;
+  }
+
+  select, input[type="text"], input[type="date"], textarea {
+    font-family: inherit;
+    font-size: 13.5px;
+    color: var(--ink);
+    background: var(--bg);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-s);
+    padding: 7px 10px;
+  }
+
+  select:focus, input:focus, textarea:focus, button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+  }
+
+  .month-select { font-weight: 600; min-width: 92px; }
+
+  .period-range {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .period-range input[type="date"] { width: 138px; }
+  .period-range .sep { color: var(--ink-faint); }
+
+  .period-note {
+    font-size: 11px;
+    color: var(--success);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .btn {
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: var(--radius-s);
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 120ms ease, border-color 120ms ease, transform 80ms ease;
+  }
+  .btn:active { transform: translateY(1px); }
+
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: var(--accent-strong); }
+
+  .btn-ghost {
+    background: transparent;
+    border-color: var(--border-strong);
+    color: var(--ink);
+  }
+  .btn-ghost:hover { background: var(--bg-sunken); }
+
+  .btn-quiet {
+    background: transparent;
+    color: var(--accent);
+    padding: 6px 4px;
+    border: none;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .spacer { flex: 1 1 auto; }
+
+  /* ---------- ステータスチップ ---------- */
+  .status-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11.5px;
+    font-weight: 600;
+    padding: 4px 10px 4px 8px;
+    border-radius: 999px;
+  }
+  .chip-dot { width: 6px; height: 6px; border-radius: 50%; flex: none; }
+
+  .chip-ok { background: var(--success-soft); color: var(--success); }
+  .chip-ok .chip-dot { background: var(--success); }
+
+  .chip-warn { background: var(--warning-soft); color: var(--warning); }
+  .chip-warn .chip-dot { background: var(--warning); }
+
+  .chip-off { background: var(--bg-sunken); color: var(--ink-faint); }
+  .chip-off .chip-dot { background: var(--ink-faint); }
+
+  /* ---------- タブ ---------- */
+  .tab-bar {
+    flex: none;
+    display: flex;
+    gap: 4px;
+    padding: 12px 28px 0;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-elevated);
+  }
+
+  .tab-btn {
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-muted);
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 10px 6px 12px;
+    margin: 0 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .tab-btn:hover { color: var(--ink); }
+  .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+  .tab-flag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 16px;
+    height: 16px;
+    padding: 0 4px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 700;
+    background: var(--warning-soft);
+    color: var(--warning);
+  }
+
+  .tab-panel { display: none; }
+  .tab-panel.active { display: flex; flex-direction: column; gap: 24px; }
+
+  /* ---------- メイン ---------- */
+  main {
+    flex: 1;
+    min-height: 0;
+    padding: 24px 28px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .panel {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-m);
+    box-shadow: var(--shadow);
+  }
+
+  .panel-head {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .panel-title {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    text-wrap: balance;
+  }
+
+  .panel-desc {
+    font-size: 12.5px;
+    color: var(--ink-muted);
+    margin-top: 4px;
+    max-width: 60ch;
+  }
+
+  /* ---------- 一括プロンプトパネル ---------- */
+  .prompt-panel .panel-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .prompt-body {
+    padding: 18px 20px 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+
+  @media (max-width: 720px) {
+    .prompt-body { grid-template-columns: 1fr; }
+  }
+
+  .prompt-col {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .prompt-col-label {
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--ink-muted);
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .prompt-textarea {
+    resize: vertical;
+    min-height: 132px;
+    background: var(--bg-sunken);
+    line-height: 1.6;
+    font-size: 12.5px;
+    color: var(--ink-muted);
+  }
+
+  .paste-textarea {
+    resize: vertical;
+    min-height: 132px;
+    font-size: 13px;
+  }
+
+  .prompt-actions {
+    display: flex;
+    gap: 10px;
+    padding: 0 20px 20px;
+  }
+
+  .external-hint {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11.5px;
+    color: var(--ink-faint);
+    padding: 0 20px 18px;
+    margin-top: -8px;
+  }
+
+  /* ---------- 固定項目(社員番号等) ---------- */
+  .basic-grid {
+    padding: 18px 20px 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+  @media (max-width: 720px) {
+    .basic-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  .basic-grid input { width: 100%; }
+
+  /* ---------- 項目カード ---------- */
+  .item-card { display: flex; flex-direction: column; }
+
+  .item-head {
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .item-index {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--accent);
+    width: 28px;
+    flex: none;
+  }
+
+  .item-title-wrap { flex: 1; min-width: 0; }
+
+  .item-title {
+    font-family: var(--font-display);
+    font-size: 15.5px;
+    font-weight: 700;
+  }
+
+  .item-sub {
+    font-size: 11.5px;
+    color: var(--ink-faint);
+    margin-top: 2px;
+  }
+
+  .item-body {
+    padding: 16px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  details.prevmonth {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-s);
+    background: var(--bg-sunken);
+  }
+  details.prevmonth summary {
+    cursor: pointer;
+    padding: 9px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink-muted);
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  details.prevmonth summary::-webkit-details-marker { display: none; }
+  details.prevmonth summary::before {
+    content: "▸";
+    font-size: 10px;
+    color: var(--ink-faint);
+    transition: transform 120ms ease;
+  }
+  details.prevmonth[open] summary::before { transform: rotate(90deg); }
+  .prevmonth-text {
+    padding: 0 12px 12px 26px;
+    font-size: 12.5px;
+    color: var(--ink-muted);
+  }
+
+  .item-textarea {
+    min-height: 96px;
+    resize: vertical;
+    font-size: 13.5px;
+  }
+
+  .item-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .char-count {
+    font-size: 11px;
+    color: var(--ink-faint);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .item-actions { display: flex; gap: 8px; }
+
+  /* ---------- 補足項目(手動入力のみ) ---------- */
+  .manual-note {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    color: var(--ink-faint);
+    background: var(--bg-sunken);
+    border-radius: 999px;
+    padding: 3px 9px;
+  }
+
+  /* ---------- 保存バー ---------- */
+  .save-bar {
+    position: sticky;
+    bottom: 0;
+    z-index: 20;
+    background: var(--bg-elevated);
+    border-top: 1px solid var(--border);
+    padding: 14px 28px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 -4px 16px rgba(27, 30, 36, 0.06);
+  }
+
+  .save-info {
+    font-size: 12px;
+    color: var(--ink-muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .save-info b { color: var(--ink); font-weight: 600; }
+
+  .icon {
+    display: inline-flex;
+    width: 14px;
+    height: 14px;
+    flex: none;
+  }
+</style>
+
+<div class="window-frame">
+  <div class="title-bar">
+    <div class="title-bar-brand">
+      <span class="title-bar-icon">月</span>
+      月次報告作成支援 — 月報2026年度_渡辺晃佑.xlsx
+    </div>
+    <div class="spacer"></div>
+    <div class="palette-switch" role="group" aria-label="配色">
+      <button class="palette-swatch active" data-palette-btn="indigo" aria-label="紺白ライト"></button>
+      <button class="palette-swatch" data-palette-btn="green" aria-label="緑白ライト"></button>
+    </div>
+    <div class="win-caption-btns">
+      <button aria-label="最小化"><svg viewBox="0 0 10 10"><rect x="0" y="4.5" width="10" height="1" fill="currentColor"/></svg></button>
+      <button aria-label="最大化"><svg viewBox="0 0 10 10"><rect x="0.5" y="0.5" width="9" height="9" fill="none" stroke="currentColor" stroke-width="1"/></svg></button>
+      <button class="close" aria-label="閉じる"><svg viewBox="0 0 10 10"><line x1="0" y1="0" x2="10" y2="10" stroke="currentColor" stroke-width="1.1"/><line x1="10" y1="0" x2="0" y2="10" stroke="currentColor" stroke-width="1.1"/></svg></button>
+    </div>
+  </div>
+
+<div class="app">
+
+  <!-- 画面A: 月選択・報告期間設定バー -->
+  <header class="period-bar">
+    <div class="brand">
+      <span class="brand-mark">月報下書き</span>
+      <span class="brand-sub">渡辺晃佑</span>
+    </div>
+
+    <div class="field-group">
+      <label for="month">対象月</label>
+      <select id="month" class="month-select">
+        <option>5月度</option>
+        <option selected>6月度</option>
+        <option>7月度</option>
+      </select>
+    </div>
+
+    <div class="field-group">
+      <label>報告期間</label>
+      <div class="period-range">
+        <input type="date" value="2026-05-25" aria-label="開始日">
+        <span class="sep">〜</span>
+        <input type="date" value="2026-06-30" aria-label="終了日">
+      </div>
+    </div>
+
+    <div class="period-note" title="前月シート(5月度)の終了日から自動算出">
+      <svg class="icon" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.7L13 4.3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      前月シートから自動算出
+    </div>
+
+    <div class="spacer"></div>
+
+    <div class="status-row">
+      <span class="chip chip-ok"><span class="chip-dot"></span>ToDo連携: 12件取得</span>
+      <span class="chip chip-off"><span class="chip-dot"></span>Slack: 未連携</span>
+    </div>
+
+    <button class="btn btn-ghost">データを再取得</button>
+  </header>
+
+  <nav class="tab-bar">
+    <button class="tab-btn active" data-tab="work">作業報告(下書き対象)</button>
+    <button class="tab-btn" data-tab="site">現場情報<span class="tab-flag">未入力</span></button>
+  </nav>
+
+  <main>
+
+   <div class="tab-panel active" data-tab-panel="work">
+
+    <!-- 一括プロンプト生成パネル -->
+    <section class="panel prompt-panel">
+      <div class="panel-head">
+        <div>
+          <div class="panel-title">下書きプロンプトを作成</div>
+          <p class="panel-desc">ToDoの完了・繰越タスクと前月の記載内容から、4項目分の下書きをまとめて依頼する文章を1つ作成します。Claude.ai(無料版)に貼り付けて生成し、結果をそのまま右側に貼り戻してください。</p>
+        </div>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-col">
+          <div class="prompt-col-label">
+            <span>① 生成したプロンプト</span>
+          </div>
+          <textarea class="prompt-textarea" readonly>【依頼】以下の情報をもとに、月次報告書の4項目「作業内容」「現場での問題点」「個人の問題点」「次月の目標」それぞれの下書きを、見出し付きで作成してください。
+
+■ 報告期間: 2026/05/25〜2026/06/30
+
+■ ToDo完了タスク(期間内)
+- [Aシステム更改] 結合テスト仕様書レビュー (進捗100%)
+- [Aシステム更改] 障害対応 #241 原因調査 (進捗100%)
+
+■ ToDo繰越タスク(期間内が期限、未完了)
+- [Aシステム更改] 本番移行手順書作成 (進捗60%)
+
+■ 前月(5月度)の記載内容
+現場での問題点: 検証環境のデータ不整合により…</textarea>
+          <button class="btn btn-ghost" style="align-self:flex-start;">プロンプトをコピー</button>
+        </div>
+        <div class="prompt-col">
+          <div class="prompt-col-label">
+            <span>② Claude.aiの生成結果を貼り付け</span>
+          </div>
+          <textarea class="paste-textarea" placeholder="Claude.ai(claude.ai)で生成した文章をここに貼り付けてください。見出しごとに自動で各項目欄へ振り分けます。"></textarea>
+          <button class="btn btn-primary" style="align-self:flex-start;">貼り付けた内容を各項目に振り分ける</button>
+        </div>
+      </div>
+      <div class="external-hint">
+        <svg class="icon" viewBox="0 0 16 16" fill="none"><path d="M6.5 9.5L13 3M13 3H8.5M13 3V7.5M12 9.3V12.3C12 12.9 11.5 13.3 11 13.3H3.7C3.1 13.3 2.7 12.9 2.7 12.3V5C2.7 4.4 3.1 4 3.7 4H6.7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        claude.ai を別タブで開いて貼り付け・生成してください(このアプリからAPIは呼び出しません)
+      </div>
+    </section>
+
+   </div>
+
+   <div class="tab-panel" data-tab-panel="site">
+
+    <!-- 基本情報 -->
+    <section class="panel">
+      <div class="panel-head">
+        <div class="panel-title">基本情報</div>
+      </div>
+      <div class="basic-grid">
+        <div class="field-group"><label>社員番号</label><input type="text" value="EMP-04821"></div>
+        <div class="field-group"><label>氏名</label><input type="text" value="渡辺晃佑"></div>
+        <div class="field-group"><label>報告日</label><input type="text" value="2026/06/30"></div>
+        <div class="field-group"><label>エンドユーザ</label><input type="text" value="株式会社サンプル商事"></div>
+        <div class="field-group"><label>作業場所</label><input type="text" value="客先常駐"></div>
+        <div class="field-group"><label>システム名</label><input type="text" value="Aシステム更改"></div>
+      </div>
+    </section>
+
+   </div>
+
+   <div class="tab-panel active" data-tab-panel="work">
+
+    <!-- 項目1: 作業内容 -->
+    <section class="panel item-card">
+      <div class="item-head">
+        <div class="item-index">01</div>
+        <div class="item-title-wrap">
+          <div class="item-title">作業内容</div>
+          <div class="item-sub">B18セル / ToDo・前月データから下書き対象</div>
+        </div>
+      </div>
+      <div class="item-body">
+        <textarea class="item-textarea">・結合テスト仕様書のレビューを実施し、指摘事項8件を修正した。
+・障害 #241(バッチ処理の二重実行)の原因調査を行い、原因を特定した。
+・本番移行手順書の作成に着手した(進捗60%、次月に持ち越し)。</textarea>
+        <div class="item-footer">
+          <span class="char-count">128 文字</span>
+          <div class="item-actions">
+            <button class="btn btn-ghost">手動で修正する</button>
+            <button class="btn btn-primary">この内容を報告書に反映</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 項目2: 現場での問題点 -->
+    <section class="panel item-card">
+      <div class="item-head">
+        <div class="item-index">02</div>
+        <div class="item-title-wrap">
+          <div class="item-title">現場での問題点</div>
+          <div class="item-sub">B29セル / ToDo・前月データから下書き対象</div>
+        </div>
+      </div>
+      <div class="item-body">
+        <details class="prevmonth">
+          <summary>前月(5月度)の記載を見る</summary>
+          <p class="prevmonth-text">検証環境のデータ不整合により、結合テストの一部が遅延した。環境払い出し手順の見直しをチームに依頼中。</p>
+        </details>
+        <textarea class="item-textarea" placeholder="下書きが未反映です。上のプロンプトから生成するか、直接入力してください。"></textarea>
+        <div class="item-footer">
+          <span class="char-count">0 文字</span>
+          <div class="item-actions">
+            <button class="btn btn-ghost">手動で修正する</button>
+            <button class="btn btn-primary">この内容を報告書に反映</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 項目3: 個人の問題点 -->
+    <section class="panel item-card">
+      <div class="item-head">
+        <div class="item-index">03</div>
+        <div class="item-title-wrap">
+          <div class="item-title">個人の問題点</div>
+          <div class="item-sub">B34セル / ToDo・前月データから下書き対象</div>
+        </div>
+      </div>
+      <div class="item-body">
+        <details class="prevmonth">
+          <summary>前月(5月度)の記載を見る</summary>
+          <p class="prevmonth-text">障害対応に時間を取られ、ドキュメント整備が後回しになりがちだった。</p>
+        </details>
+        <textarea class="item-textarea" placeholder="下書きが未反映です。上のプロンプトから生成するか、直接入力してください。"></textarea>
+        <div class="item-footer">
+          <span class="char-count">0 文字</span>
+          <div class="item-actions">
+            <button class="btn btn-ghost">手動で修正する</button>
+            <button class="btn btn-primary">この内容を報告書に反映</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 項目4: 次月の目標(翌月の課題) -->
+    <section class="panel item-card">
+      <div class="item-head">
+        <div class="item-index">04</div>
+        <div class="item-title-wrap">
+          <div class="item-title">次月の目標</div>
+          <div class="item-sub">C48セル(月間目標配下) / ToDo・前月データから下書き対象</div>
+        </div>
+      </div>
+      <div class="item-body">
+        <details class="prevmonth">
+          <summary>前月(5月度)の記載を見る</summary>
+          <p class="prevmonth-text">結合テストを完了させ、本番移行手順書のドラフトを作成する。</p>
+        </details>
+        <textarea class="item-textarea" placeholder="下書きが未反映です。上のプロンプトから生成するか、直接入力してください。"></textarea>
+        <div class="item-footer">
+          <span class="char-count">0 文字</span>
+          <div class="item-actions">
+            <button class="btn btn-ghost">手動で修正する</button>
+            <button class="btn btn-primary">この内容を報告書に反映</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+   </div>
+
+   <div class="tab-panel" data-tab-panel="site">
+
+    <!-- 手動入力のみの項目 -->
+    <section class="panel item-card">
+      <div class="item-head">
+        <div class="item-index" style="color:var(--ink-faint);">05</div>
+        <div class="item-title-wrap">
+          <div class="item-title">現場の展望・今月の目標・達成度</div>
+          <div class="item-sub">B39 / C44 / C46セル</div>
+        </div>
+        <span class="manual-note">下書き対象外・手動入力</span>
+      </div>
+      <div class="item-body">
+        <div class="field-group"><label>現場の展望</label><textarea class="item-textarea" style="min-height:64px;"></textarea></div>
+        <div class="field-group"><label>今月の目標</label><textarea class="item-textarea" style="min-height:48px;"></textarea></div>
+        <div class="field-group"><label>達成度</label><textarea class="item-textarea" style="min-height:48px;"></textarea></div>
+      </div>
+    </section>
+
+   </div>
+
+  </main>
+
+  <!-- 保存バー -->
+  <footer class="save-bar">
+    <div class="save-info">
+      <svg class="icon" viewBox="0 0 16 16" fill="none"><path d="M3 3H11L13 5V13H3V3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M5 3V6H10V3" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+      保存先: <b>月報2026年度_渡辺晃佑.xlsx</b>(6月度シート・新規作成)
+    </div>
+    <div class="spacer"></div>
+    <span class="chip chip-warn"><span class="chip-dot"></span>未保存の変更あり</span>
+    <button class="btn btn-ghost">下書きを破棄</button>
+    <button class="btn btn-primary">Excelに保存(自動バックアップ作成)</button>
+  </footer>
+
+</div>
+</div>
+
+<script>
+  document.querySelectorAll('.palette-swatch').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var palette = btn.dataset.paletteBtn;
+      document.documentElement.setAttribute('data-theme', 'light');
+      if (palette === 'green') {
+        document.documentElement.setAttribute('data-palette', 'green');
+      } else {
+        document.documentElement.removeAttribute('data-palette');
+      }
+      document.querySelectorAll('.palette-swatch').forEach(function (b) {
+        b.classList.toggle('active', b === btn);
+      });
+    });
+  });
+
+  document.querySelectorAll('.tab-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var target = btn.dataset.tab;
+      document.querySelectorAll('.tab-btn').forEach(function (b) {
+        b.classList.toggle('active', b === btn);
+      });
+      document.querySelectorAll('.tab-panel').forEach(function (panel) {
+        panel.classList.toggle('active', panel.dataset.tabPanel === target);
+      });
+      document.querySelector('main').scrollTop = 0;
+    });
+  });
+</script>
