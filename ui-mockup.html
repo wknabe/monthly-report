@@ -306,6 +306,17 @@
     font-size: 11px;
     color: var(--ink-faint);
     white-space: nowrap;
+    border: none;
+    background: transparent;
+    font-family: inherit;
+    width: 6em;
+    padding: 2px 4px;
+    border-radius: var(--radius-s);
+  }
+  .brand-sub:hover { background: var(--bg-sunken); }
+  .brand-sub:focus-visible {
+    background: var(--bg-sunken);
+    outline: 1px solid var(--border-strong);
   }
 
   .field-group {
@@ -735,7 +746,7 @@
   <header class="period-bar">
     <div class="brand">
       <span class="brand-mark">月報下書き</span>
-      <span class="brand-sub">渡辺晃佑</span>
+      <input type="text" class="brand-sub" id="field-fullname" value="渡辺晃佑" title="氏名(保存ファイル名に使用されます)" aria-label="氏名">
     </div>
 
     <div class="field-group">
@@ -833,11 +844,30 @@
       </div>
       <div class="basic-grid">
         <div class="field-group"><label>社員番号</label><input type="text" value="EMP-04821"></div>
-        <div class="field-group"><label>氏名</label><input type="text" value="渡辺晃佑"></div>
-        <div class="field-group"><label>報告日</label><input type="text" value="2026/06/30"></div>
+        <div class="field-group"><label>課</label><input type="text" value="S1-2"></div>
         <div class="field-group"><label>エンドユーザ</label><input type="text" value="株式会社サンプル商事"></div>
         <div class="field-group"><label>作業場所</label><input type="text" value="客先常駐"></div>
+        <div class="field-group"><label>経由</label><input type="text" value="リボルブシス"></div>
+        <div class="field-group"><label>出退勤時刻</label><input type="text" value="9:00~18:00"></div>
         <div class="field-group"><label>システム名</label><input type="text" value="Aシステム更改"></div>
+        <div class="field-group"><label>フェーズ</label><input type="text" value="調査・基本設計"></div>
+        <div class="field-group"><label>開始年月〜完了予定年月</label><input type="text" value="2026/01~2026/06"></div>
+        <div class="field-group"><label>契約形態</label><input type="text" value="派遣"></div>
+        <div class="field-group"><label>契約条件</label><input type="text" value="固定"></div>
+        <div class="field-group"><label>時間幅の場合の基準時間</label><input type="text" value="150h~200h"></div>
+        <div class="field-group"><label>契約開始年月〜契約完了年月</label><input type="text" value="2026/01~2026/06"></div>
+        <div class="field-group"><label>チーム員数</label><input type="text" value="6(2)"></div>
+        <div class="field-group" style="grid-column: span 2;"><label>言語・DB・ミドルウェア・プラットフォーム等</label><input type="text" value="Java(Spring),Oracle,javascript(vue.js),AWS,Tableau,Waha!"></div>
+      </div>
+    </section>
+
+    <!-- 作業概要 -->
+    <section class="panel">
+      <div class="panel-head">
+        <div class="panel-title">作業概要</div>
+      </div>
+      <div class="basic-grid" style="grid-template-columns: 1fr;">
+        <textarea class="item-textarea" style="min-height:56px;">合併による商品名の変更の影響調査</textarea>
       </div>
     </section>
 
@@ -972,7 +1002,7 @@
   <footer class="save-bar">
     <div class="save-info">
       <svg class="icon" viewBox="0 0 16 16" fill="none"><path d="M3 3H11L13 5V13H3V3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M5 3V6H10V3" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
-      保存先: <b>月報2026年度_渡辺晃佑.xlsx</b>(6月度シート・新規作成)
+      保存先: <b>月報2026年度_<span id="save-filename-name">渡辺晃佑</span>.xlsx</b>(6月度シート・新規作成)
     </div>
     <div class="spacer"></div>
     <span class="chip chip-warn"><span class="chip-dot"></span>未保存の変更あり</span>
@@ -984,6 +1014,14 @@
 </div>
 
 <script>
+  var fullnameInput = document.getElementById('field-fullname');
+  var filenameLabel = document.getElementById('save-filename-name');
+  if (fullnameInput && filenameLabel) {
+    fullnameInput.addEventListener('input', function () {
+      filenameLabel.textContent = fullnameInput.value.trim() || '未入力';
+    });
+  }
+
   document.querySelectorAll('.palette-swatch').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var palette = btn.dataset.paletteBtn;
