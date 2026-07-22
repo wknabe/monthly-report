@@ -281,7 +281,7 @@
     border-bottom: 1px solid var(--border);
     padding: 14px 28px;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     gap: 20px;
     flex-wrap: wrap;
     box-shadow: var(--shadow);
@@ -289,8 +289,7 @@
 
   .brand {
     display: flex;
-    align-items: baseline;
-    gap: 8px;
+    align-items: flex-end;
     margin-right: 8px;
   }
 
@@ -303,20 +302,7 @@
   }
 
   .brand-sub {
-    font-size: 11px;
-    color: var(--ink-faint);
-    white-space: nowrap;
-    border: none;
-    background: transparent;
-    font-family: inherit;
-    width: 6em;
-    padding: 2px 4px;
-    border-radius: var(--radius-s);
-  }
-  .brand-sub:hover { background: var(--bg-sunken); }
-  .brand-sub:focus-visible {
-    background: var(--bg-sunken);
-    outline: 1px solid var(--border-strong);
+    width: 110px;
   }
 
   .field-group {
@@ -746,6 +732,10 @@
   <header class="period-bar">
     <div class="brand">
       <span class="brand-mark">月報下書き</span>
+    </div>
+
+    <div class="field-group">
+      <label for="field-fullname">氏名</label>
       <input type="text" class="brand-sub" id="field-fullname" value="渡辺晃佑" title="氏名(保存ファイル名に使用されます)" aria-label="氏名">
     </div>
 
@@ -776,6 +766,7 @@
 
     <div class="status-row">
       <span class="chip chip-ok"><span class="chip-dot"></span>ToDo連携: 12件取得</span>
+      <span class="chip chip-off"><span class="chip-dot"></span>Teams: 未連携</span>
       <span class="chip chip-off"><span class="chip-dot"></span>Slack: 未連携</span>
     </div>
 
