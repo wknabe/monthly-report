@@ -301,9 +301,6 @@
     white-space: nowrap;
   }
 
-  .brand-sub {
-    width: 110px;
-  }
 
   .field-group {
     display: flex;
@@ -332,7 +329,7 @@
     outline-offset: 1px;
   }
 
-  .month-select { font-weight: 600; min-width: 92px; }
+  .month-select { font-weight: 600; width: 136px; }
 
   .period-range {
     display: flex;
@@ -341,8 +338,16 @@
     font-variant-numeric: tabular-nums;
   }
 
-  .period-range input[type="date"] { width: 138px; }
+  .period-range input[type="date"] { width: 136px; }
   .period-range .sep { color: var(--ink-faint); }
+
+  /* 期間バー内のコントロールは幅・高さを揃える */
+  .period-bar select,
+  .period-bar input[type="text"],
+  .period-bar input[type="date"] {
+    width: 136px;
+    height: 34px;
+  }
 
   .period-note {
     font-size: 11px;
