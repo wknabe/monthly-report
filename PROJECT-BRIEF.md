@@ -22,9 +22,10 @@
 
 ## 現在のステータス
 
-- **Phase 0・Phase 1完了**。次はPhase 2(Electronアプリ土台構築、新規GitHubリポジトリ作成)から。
+- **Phase 0・Phase 1・Phase 2(土台部分)完了**。次はPhase 2の残り(UIモックアップの本実装)またはPhase 3(前月参照・一括プロンプト生成の実地テスト)。
 - Phase 0: ToDoアプリ(`C:\Users\nabe\Desktop\claude\ToDo`)の`COMPLETED_PURGE_DAYS`を15日→45日に変更・コミット・プッシュ済み(`src/main/db.ts`・`src/renderer/src/taskArchive.ts`)。
-- Phase 1: `C:\Users\nabe\Desktop\claude\monthly-report-app`(ローカルのみ、GitHubリポジトリ未作成)に検証スクリプト(`scripts/verify-excel.js`)を作成し、実データのコピー(`tmp/`、git管理対象外)で検証済み。結果は下記「Phase 1検証結果(確定)」を参照。
+- Phase 1: Excel基盤検証スクリプト(`scripts/verify-excel.js`)で実データのコピー検証済み。結果は下記「Phase 1検証結果(確定)」を参照。
+- Phase 2: `C:\Users\nabe\Desktop\claude\monthly-report-app`にelectron-vite + React + TypeScriptの雛形を構築し、新規GitHubリポジトリ`https://github.com/wknabe/monthly-report-app`(公開)に初回push済み。Playwright経由でElectronウィンドウの起動・画面表示を実機検証済み(プレースホルダー画面「月次報告作成支援」が表示されることを確認)。UIモックアップ(`ui-mockup.html`)の実装(4項目編集画面・タブ・保存バー等)はまだこれから。
 - UIモックアップ(`ui-mockup.html`、Claude Artifactとして公開中)で見た目・画面構成は固め済み。
 
 ## Excelファイルの実データ構造(調査済み・確定)
@@ -106,7 +107,7 @@ Artifact URL: `https://claude.ai/code/artifact/455d9021-0cb1-4f30-a1e8-3ca789f45
 ## 参照ファイル
 
 - ToDoアプリ本体: `C:\Users\nabe\Desktop\claude\ToDo`(`src/main/db.ts`に`COMPLETED_PURGE_DAYS`定義、45日に変更済み)
-- 月報アプリ(Phase 1検証コード、ローカルのみ・GitHubリポジトリ未作成): `C:\Users\nabe\Desktop\claude\monthly-report-app`
+- 月報アプリ本体: `C:\Users\nabe\Desktop\claude\monthly-report-app`(GitHub: `https://github.com/wknabe/monthly-report-app`)
 - Excel実体: `報告資料/月報2026年度_渡辺晃佑.xlsx`(このリポジトリ内)
 - UIモックアップ: `ui-mockup.html`(このリポジトリ内)
 - PC側の詳細プランファイル(スマホ側からは非アクセス): `C:\Users\nabe\.claude\plans\silly-beaming-sundae.md`
