@@ -25,7 +25,7 @@
 - **Phase 0・Phase 1・Phase 2(土台部分)完了**。次はPhase 2の残り(UIモックアップの本実装)またはPhase 3(前月参照・一括プロンプト生成の実地テスト)。
 - Phase 0: ToDoアプリ(`C:\Users\nabe\Desktop\claude\ToDo`)の`COMPLETED_PURGE_DAYS`を15日→45日に変更・コミット・プッシュ済み(`src/main/db.ts`・`src/renderer/src/taskArchive.ts`)。
 - Phase 1: Excel基盤検証スクリプト(`scripts/verify-excel.js`)で実データのコピー検証済み。結果は下記「Phase 1検証結果(確定)」を参照。
-- Phase 2: `C:\Users\nabe\Desktop\claude\monthly-report-app`にelectron-vite + React + TypeScriptの雛形を構築し、新規GitHubリポジトリ`https://github.com/wknabe/monthly-report-app`(公開)に初回push済み。Playwright経由でElectronウィンドウの起動・画面表示を実機検証済み(プレースホルダー画面「月次報告作成支援」が表示されることを確認)。UIモックアップ(`ui-mockup.html`)の実装(4項目編集画面・タブ・保存バー等)はまだこれから。
+- Phase 2: `C:\Users\nabe\Desktop\claude\monthly-report-app`にelectron-vite + React + TypeScriptの雛形を構築し、新規GitHubリポジトリ`https://github.com/wknabe/monthly-report-app`(公開)に初回push済み。UIモックアップ(`ui-mockup.html`)のデザインをReactコンポーネントとして実装済み(フレームレスウィンドウ・タイトルバー配色切替・タブ切替・作業報告/現場情報/保存バー)。さらに「Excelファイルを開く」機能を実装し、`src/main/excelReport.ts`でB列ラベル完全一致による対象月・前月データの抽出(基本情報・作業内容・現場での問題点・個人の問題点・次月の目標・報告期間)をUIに接続済み。Playwright + dialogモックで実データのコピーを使ったE2E検証済み。**保存(Excelへの書き込み)はまだ未実装**。
 - UIモックアップ(`ui-mockup.html`、Claude Artifactとして公開中)で見た目・画面構成は固め済み。
 
 ## Excelファイルの実データ構造(調査済み・確定)
