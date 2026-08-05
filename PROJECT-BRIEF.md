@@ -22,9 +22,10 @@
 
 ## 現在のステータス
 
-- **コードは未着手**。現時点ではUIモックアップ(`ui-mockup.html`、Claude Artifactとして公開中)を作って見た目・画面構成を固めている段階。
-- 実装計画はエンジニア視点・デザイナー視点のレビューを経て確定済み(詳細は下記)。
-- 次にやるべきことは「実装計画のレビュー・承認 → Phase 0(ToDoアプリの前提修正)から実装着手」。
+- **Phase 0・Phase 1完了**。次はPhase 2(Electronアプリ土台構築、新規GitHubリポジトリ作成)から。
+- Phase 0: ToDoアプリ(`C:\Users\nabe\Desktop\claude\ToDo`)の`COMPLETED_PURGE_DAYS`を15日→45日に変更・コミット・プッシュ済み(`src/main/db.ts`・`src/renderer/src/taskArchive.ts`)。
+- Phase 1: `C:\Users\nabe\Desktop\claude\monthly-report-app`(ローカルのみ、GitHubリポジトリ未作成)に検証スクリプト(`scripts/verify-excel.js`)を作成し、実データのコピー(`tmp/`、git管理対象外)で検証済み。結果は下記「Phase 1検証結果(確定)」を参照。
+- UIモックアップ(`ui-mockup.html`、Claude Artifactとして公開中)で見た目・画面構成は固め済み。
 
 ## Excelファイルの実データ構造(調査済み・確定)
 
@@ -55,9 +56,18 @@
 
 **境界判定は既知ラベル文字列の集合との完全一致のみで行う**(「次にB列に何か出たら」ではない。実データはB列に自由記述が入る月もあるため)。
 
+## Phase 1検証結果(確定)
+
+`monthly-report-app/scripts/verify-excel.js`で実データのコピーを使い検証済み。
+
+- シート名正規化(全角/半角括弧・サンプル/空シート吸収)・B列ラベル完全一致でのセル探索(5ラベル全て検出)・「様式 」シートの複製(値/スタイル/マージセル)は全てOK。
+- 書き込み→再読み込みの往復で、マージセル・印刷設定(pageSetup)は保持される。
+- **exceljsはブック全体往復で図形(shape)とcustomXmlを消失させる**(`9月度（サンプル）`シートのテキストボックス的な注釈オブジェクトが消えることをZIP/XMLレベルで確認)。customXmlはSharePointのフォームテンプレート用メタデータで実害なし。
+- **決定: XMLレベルの部分置換フォールバックは実装しない。** ユーザーヒアリングにより、サンプルシートは実運用で不要(必要なのは1月度〜12月度のシートのみ)と判明したため、図形消失は許容し、exceljsのブック全体読み書き方式をそのまま採用する。
+
 ## 採用する設計方針(確定済み)
 
-1. **Excel読み書き**: `exceljs`採用(マージセル・スタイル保持のため)。要検証: ブック全体往復で図形・customXml・印刷設定・条件付き書式が壊れないか(実データの`9月度（サンプル）`に図形あり)。壊れる場合はXMLレベルの部分置換にフォールバック。
+1. **Excel読み書き**: `exceljs`採用(マージセル・スタイル保持のため、ブック全体読み書き方式)。図形・customXml消失は許容(上記Phase 1検証結果を参照)。
 2. **シート複製**: 対象月シートがなければ「様式 」シートを複製(exceljsに直接APIがないため自前実装)。
 3. **日付自動計算**: 前月シートのC1報告期間をパースし終了日の翌日を開始日候補に自動算出。前月シートが無ければ手動入力にフォールバック。
 4. **ToDoアプリ連携**(`C:\Users\nabe\Desktop\claude\ToDo`、better-sqlite3・DBは`%APPDATA%\todo-app\todo.db`):
@@ -95,7 +105,8 @@ Artifact URL: `https://claude.ai/code/artifact/455d9021-0cb1-4f30-a1e8-3ca789f45
 
 ## 参照ファイル
 
-- ToDoアプリ本体: `C:\Users\nabe\Desktop\claude\ToDo`(`src/main/db.ts`に`COMPLETED_PURGE_DAYS`定義)
+- ToDoアプリ本体: `C:\Users\nabe\Desktop\claude\ToDo`(`src/main/db.ts`に`COMPLETED_PURGE_DAYS`定義、45日に変更済み)
+- 月報アプリ(Phase 1検証コード、ローカルのみ・GitHubリポジトリ未作成): `C:\Users\nabe\Desktop\claude\monthly-report-app`
 - Excel実体: `報告資料/月報2026年度_渡辺晃佑.xlsx`(このリポジトリ内)
 - UIモックアップ: `ui-mockup.html`(このリポジトリ内)
 - PC側の詳細プランファイル(スマホ側からは非アクセス): `C:\Users\nabe\.claude\plans\silly-beaming-sundae.md`
